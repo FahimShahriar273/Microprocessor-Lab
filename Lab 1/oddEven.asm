@@ -1,0 +1,55 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+OD DB "ODD$"
+EV DB "EVEN$"
+.CODE
+MAIN PROC
+
+MOV AX, @DATA
+MOV DS,AX 
+ 
+ 
+    
+MOV AH,1
+INT 21H
+    
+MOV BH,AL
+
+CMP BH,30H
+JE EVEN
+
+CMP BH,32H
+JE EVEN
+
+CMP BH,34H
+JE EVEN
+
+CMP BH,36H
+JE EVEN
+
+CMP BH,38H
+JE EVEN
+
+
+
+
+
+    
+ODD: MOV AH,9
+LEA DX,OD    
+INT 21H
+JMP EXIT    
+    
+EVEN: MOV AH,9
+LEA DX,EV    
+INT 21H
+JMP EXIT        
+    
+    
+EXIT:    
+    MAIN ENDP
+END MAIN
+
+
+
